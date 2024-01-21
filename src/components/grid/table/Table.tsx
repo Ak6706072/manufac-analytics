@@ -9,13 +9,13 @@ const Table = <T,>(props: IGrid<T>) => {
       {dataSource?.map((row, index) => {
         return (
           <tr className={`manufac-grid-header-row ${styled.row}`} key={index}>
-            {row?.columnRecords?.map((data, index) => {
+            {columnConfig?.map((column, index) => {
               return (
                 <td
                   key={index} //instead of index should be having id instead of index
                   className={`manufac-grid-body-cell ${styled.cell}`}
                 >
-                  {columnConfig[index]?.render(data)}
+                  {column?.render(row?.columnRecords[column?.dataIndex])}
                 </td>
               );
             })}

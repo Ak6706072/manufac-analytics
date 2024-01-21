@@ -27,16 +27,18 @@ function App() {
           return <div>{data?.value || ""}</div>;
         },
         width: 110,
+        dataIndex: 0,
       },
     ];
 
-    Object.keys(groupedData).map((column) => {
+    Object.keys(groupedData).map((column, index) => {
       columnConfig.push({
         name: `Class ${column}`,
         render: (data) => {
           return <div>{data?.value || ""}</div>;
         },
         width: 150,
+        dataIndex: index + 1,
       });
     });
 

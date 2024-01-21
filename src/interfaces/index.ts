@@ -7,6 +7,7 @@ export interface IColumn<T> {
   render: (data: T) => JSX.Element | string;
   name: string | JSX.Element;
   width?: number;
+  dataIndex: number;
 }
 
 export interface IDataSource<T> {
