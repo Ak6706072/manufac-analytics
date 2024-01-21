@@ -15,7 +15,8 @@ const Table = <T,>(props: IGrid<T>) => {
                   key={index} //instead of index should be having id instead of index
                   className={`manufac-grid-body-cell ${styled.cell}`}
                 >
-                  {column?.render(row?.columnRecords[column?.dataIndex])}
+                  {column?.render(row?.columnRecords[column?.dataIndex])}{" "}
+                  {/*we are giving more control to the user who will integrate the grid*/}
                 </td>
               );
             })}
