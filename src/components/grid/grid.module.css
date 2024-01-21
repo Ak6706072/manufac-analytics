@@ -1,0 +1,19 @@
+.table {
+  border-collapse: collapse;
+}
+
+.row {
+  height: 35px;
+}
+
+.cell {
+  border: 1px solid darkgray;
+  padding: 0px 8px;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
+.cell:first-child {
+  text-align: center;
+  font-weight: bold;
+}
