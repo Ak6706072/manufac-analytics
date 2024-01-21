@@ -1,5 +1,10 @@
 import { IDataSet, IRecords } from "../interfaces";
 import { Property } from "../enums";
+
+const roundToThreeDigit = (value: number) => {
+  return value?.toFixed(3);
+};
+
 export const calculateGammaProperty = (
   ash: number,
   hue: number,
@@ -8,7 +13,7 @@ export const calculateGammaProperty = (
   try {
     let gamma = (ash * hue) / magnesium;
 
-    gamma = Math.round(gamma * 1000) / 1000;
+    gamma = Number(roundToThreeDigit(gamma));
 
     return gamma;
   } catch (ex) {
@@ -56,14 +61,14 @@ export const getMedianFromDataSet = (
 
     if (recordCounts % 2 === 0) {
       const nBy2thTerm = (recordCounts - 2) / 2;
-
-      return (
+      const median =
         (sortedRecords[nBy2thTerm][property] +
           sortedRecords[nBy2thTerm + 1][property]) /
-        2
-      );
+        2;
+
+      return roundToThreeDigit(median);
     } else {
-      return sortedRecords[(recordCounts - 1) / 2][property];
+      return roundToThreeDigit(sortedRecords[(recordCounts - 1) / 2][property]);
     }
   } catch (ex) {
     console.log("Error in getClassWiseMedianFromDataSet", ex);
@@ -90,10 +95,10 @@ export const getModeFromData = (classDataSet: IDataSet[], property: string) => {
       maxFreq = Math.max(maxFreq, freqMap[key]);
     }
 
-    let mode: number[] = [];
+    let mode: string[] = [];
     for (let key in freqMap) {
       if (freqMap[key] === maxFreq) {
-        mode.push(Number(key));
+        mode.push(roundToThreeDigit(Number(key)));
       }
     }
 
