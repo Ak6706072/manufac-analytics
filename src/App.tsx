@@ -19,7 +19,7 @@ function App() {
 
   const augmentAndSetColumnConfig = (
     groupedData: Record<string, IDataSet[]>
-  ) => {
+  ): void => {
     const columnConfig: IColumn<IRecords>[] = [
       {
         name: "Measure",
@@ -100,7 +100,7 @@ function App() {
         // instated of showing blank in place of grid.
 
         const groupedData = getGroupedDataBasedonTheClass(TestData);
-        console.log("groupData", groupedData);
+
         augmentAndSetColumnConfig(groupedData);
         setFlevanoidsDataSource(
           getDataSourceForFalavnoids(groupedData, Property.Flavanoids)
